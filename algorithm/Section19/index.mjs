@@ -1,3 +1,7 @@
+/**
+ * 싱글 링크드 리스트
+ */
+
 class Node {
   constructor(val) {
     this.val = val;
@@ -24,14 +28,7 @@ class SingleyLinkedList {
     this.length++;
     return this;
   }
-  // traverse(){
-  //     var current = this.head;
-  //     while(current) {
-  //         console.log(current.val)
-  //         current = current.next
-  //     }
-  // }
-  pop(val) {
+  pop() {
     let current = this.head;
     let newTail = current;
     if (!current) return undefined;
@@ -48,6 +45,38 @@ class SingleyLinkedList {
     }
     return current;
   }
+  shift() {
+    if (!this.head) return undefined;
+    let currentHead = this.head;
+    this.head = currentHead.next;
+    this.length--;
+    if (this.length === 0) {
+      this.tail = null;
+    }
+    return currentHead;
+  }
+  unshift(val) {
+    let newNode = new Node(val);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = this.head;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    this.length++;
+  }
+  get(index) {
+    if (index < 0 || index >= this.length) return null;
+    let counter = 0;
+    let current = this.head;
+
+    while (counter !== index) {
+      current = current.next;
+      counter++;
+    }
+    return current;
+  }
 }
 
 var list = new SingleyLinkedList();
@@ -55,3 +84,5 @@ list.push("a");
 list.push("b");
 list.push("c");
 list.push("d");
+
+console.log(list.get(6));
