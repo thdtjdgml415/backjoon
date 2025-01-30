@@ -27,6 +27,7 @@ function countNumber(str) {
     }
     countObj[val]++;
   }
+  console.log(countObj);
 
   maxCount(countObj);
 }
@@ -36,6 +37,7 @@ function maxCount(countObj) {
   let maxCount = 0;
   let mostFrequent = [];
   // 객체를 탐색하고 Object.entries가 객체를 {["a", 1],["b", 1]} 이런식으로 구성하고 구조분해 할당을 이용해 key와 value를 나눠 순회하도록 합니다.
+
   for (let [key, value] of Object.entries(countObj)) {
     if (maxCount < value) {
       // 최대값 maxCount보다 value가 크다면 value가 새로운 maxCount이기 때문에 새로 재할당하고
@@ -50,4 +52,5 @@ function maxCount(countObj) {
   // mostFrequent 배열 길이가 1보다 크다면 빈도 수가 높은 수가 여러개이기 때문에 "?"를 출력하고 아니라면 문자 그대로를 출력합니다.
   mostFrequent.length > 1 ? console.log("?") : console.log(mostFrequent.join());
 }
+
 solution(input);
