@@ -1,3 +1,6 @@
+/**
+ * Longest Substring Without Repeating Characters
+ */
 const filePath = process.platform === "linux" ? "/dev/stdin" : "input.txt";
 let input = require("fs").readFileSync(filePath).toString().trim().split(" ");
 
